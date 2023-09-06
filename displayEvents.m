@@ -11,8 +11,8 @@ for rec = 1:2
     targetFile = fullfile(dataRepo,recFolder,recID,'abf', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_0001.abf');
     targetRawFile = fullfile(dataRepo,recFolder,recID,'abf_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_0001.abf');
     eventFileSim = fullfile(dataRepo,recFolder,recID,'mat_minis', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07.mat');
-    eventFileMiniAnalysis = fullfile(dataRepo,recFolder,recID,'mat_MiniAnalysis', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_MiniAnalysis.mat');
-    eventFilepClampRaw = fullfile(dataRepo,recFolder,recID,'mat_pClamp_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_pClamp.mat');
+    eventFileMiniAnalysis = fullfile(dataRepo,recFolder,recID,'mat_MA', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_MiniAnalysis.mat');
+    eventFilepClampRaw = fullfile(dataRepo,recFolder,recID,'mat_pC_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n2000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__10_Jan_2021_23_30_07_pClamp.mat');
     yRange = [-62.55 -58.8];
   else
     recID = 'p108b';
@@ -20,8 +20,8 @@ for rec = 1:2
     targetFile = fullfile(dataRepo,recFolder,recID,'abf', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_0001.abf');
     targetRawFile = fullfile(dataRepo,recFolder,recID,'abf_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_0001.abf');
     eventFileSim = fullfile(dataRepo,recFolder,recID,'mat_minis', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31.mat');
-    eventFileMiniAnalysis = fullfile(dataRepo,recFolder,recID,'mat_MiniAnalysis', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_MiniAnalysis.mat');
-    eventFilepClampRaw = fullfile(dataRepo,recFolder,recID,'mat_pClamp_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_pClamp.mat');
+    eventFileMiniAnalysis = fullfile(dataRepo,recFolder,recID,'mat_MA', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_MiniAnalysis.mat');
+    eventFilepClampRaw = fullfile(dataRepo,recFolder,recID,'mat_pC_raw', 'algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_pClamp.mat');
     yRange = [-58 -53.96];
   end
 
