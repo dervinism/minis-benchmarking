@@ -1,10 +1,10 @@
 # minis-benchmarking
-This repository contains benchamarking analysis Matlab code for [minis](insert the link here) software. It contains all the analysis code required to reproduce Figure 2 and Figures 4-15 of the minis benchmarking [manuscript](insert the link here).
+This repository contains benchmarking analysis Matlab code for [minis](https://github.com/dervinism/minis) software. It contains all the analysis code required to reproduce Figure 2 and Figures 4-15 of the minis benchmarking [manuscript](https://doi.org/10.1101/2022.03.20.485046).
 
 ## Installation Instructions
-Download the code repository and add it to the Matlab path, including its subfolders. If you are using Windows, place the code repository in your system's root folder, because ABF files have long names. Subsequently, download the minis benchmarking data [repository](insert the link here) and place it inside the minis-benchamarking [repository](insert the link here).
+Download the code repository and add it to the Matlab path, including its subfolders. If you are using Windows, place the code repository in your system's root folder, because ABF files have long names. Subsequently, download the minis benchmarking data [repository](https://gin.g-node.org/dervinism/minis-benchmarking-data) and place it inside the minis-benchamarking [repository](https://github.com/dervinism/minis-benchmarking).
 
-The analysis code in this repository also depends on the minis software source code. Therefore, you also need to download and install minis [repository](insert the link here).
+The analysis code in this repository also depends on the minis software source code. Therefore, you also need to download and install minis [repository](https://github.com/dervinism/minis/tree/main/source_code).
 
 ## Instructions for Reproducing Manuscript Figures
 Once all the required repositories are downloaded and Matlab path is set up, it is straightforward to reproduce the figures. In order to reproduce Figure 2, simply execute the script ```displayEventsProtocols.m```. When requested about data filtering, press ```OK```. Figure panels will be saved inside the folder ```minis-benchmarking/minis-benchmarking-data/recs/p108b/traces```. Panel A corresponds to the files named ```algorithm_performance_data__amp0p3_sAmp0p05_n4000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_56_48_0001_interv_12570_13350_voltage_range_-60.55_-53.45``` (in PNG, EPS, and FIG file formats). Panel B is saved in files named ```algorithm_performance_data__amp0p3_sAmp0p05_n8000_RT0p5_sRT2p8_rho0_thr0p1_noiseScaleFactor1_smoothWindow1p5__11_Jan_2021_13_57_31_0001_interv_12570_13350_voltage_range_-60.55_-53.45```.

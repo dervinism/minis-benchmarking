@@ -1,9 +1,9 @@
 # minis-benchmarking-data
-Intracellular noise recordings and simulations of miniature excitatory postsynaptic potentials in cortical pyramidal cells. The data in this repository was used to produce the [manuscript](insert the link here) of the [minis](insert the link here) software benchamarking study.
+Intracellular membrane potential noise recordings in cortical pyramidal cells after blocking action potentials and synaptic transmission (0.5 or 1 μM TTX, 12.5 μM gabazine, 40 μM NBQX, and 50 μM CPP) and simulations of miniature excitatory postsynaptic potentials (mEPSPs) in cortical pyramidal cells. The data in this repository was used to produce the [manuscript](https://doi.org/10.1101/2022.03.20.485046) of the [minis](https://github.com/dervinism/minis) software benchmarking study.
 
 ## Repository content
 ### recs
-```recs``` folder holds data for all individual recordings in separate folders. Folders are named according to recording IDs: ```p103a```, ```p106b```, ```p108a```, ```p108b```, ```p108c```, ```p120b```, ```p122a```, ```p124b```, ```p125a```, ```p127c```, ```p128c```, ```p129a```, ```p131a```, ```p131c```. Each recording ID folder has the following structure:
+```recs``` folder holds data for all individual recordings in separate folders. Folders are named according to recording IDs: ```p103a```, ```p106b```, ```p108a```, ```p108b```, ```p108c```, ```p120b```, ```p122a```, ```p124b```, ```p125a```, ```p127c```, ```p128c```, ```p129a```, ```p131a```, ```p131c```. Recording IDs are formed by appending the animal ID with the slice ID letter. Each recording ID folder has the following structure:
 |**Folder name**          |**Description**   |
 |-------------------------|------------------|
 |abf 	                    | *This folder contains Axon Binary Format files produced by simulating excitatory postsynaptic potentials (EPSPs) and superimposing them on top of the filtered and smoothed intracellular membrane potential noise recordings. These files are produced by ```minis``` software running in the ```Simulate``` mode. ```minis``` in turn calls ```simulateDetectEvaluate``` function which performs the simulation, runs the ```minis``` detection algorithm on the noise + simulated EPSP time series data, and evaluates detection performance using signal detection measures. There are 4 simulated files per each test condition as described in the manuscript. File name parts identifying different conditions are listed below the table.*|
@@ -55,4 +55,4 @@ Detection performance evaluation analysis output is produced separately for each
 |filename 	        | *Noise recording file name.*|
 
 ### temps
-Clampfit EPSP templates (Axon Text File format) used to detect simulated EPSPs and described in the benchamarking manuscript.
+Clampfit EPSP templates (Axon Text File format) used to detect simulated EPSPs and described in the benchmarking [manuscript](https://doi.org/10.1101/2022.03.20.485046).
