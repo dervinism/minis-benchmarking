@@ -2,7 +2,7 @@
 This repository contains benchmarking analysis Matlab code for [minis](https://github.com/dervinism/minis) software. It contains all the analysis code required to reproduce Figure 2 and Figures 4-15 of the minis benchmarking [manuscript](https://doi.org/10.1101/2022.03.20.485046).
 
 ## Installation Instructions
-Download the code repository and add it to the Matlab path, including its subfolders. If you are using Windows, place the code repository in your system's root folder, because ABF files have long names. Subsequently, download the minis benchmarking data [repository](https://gin.g-node.org/dervinism/minis-benchmarking-data) and place it inside the minis-benchamarking [repository](https://github.com/dervinism/minis-benchmarking).
+Download the code repository and add it to the Matlab path, including its subfolders. If you are using Windows, place the code repository in your system's root folder, because ABF files have long names. Subsequently, download the minis benchmarking data [repository](https://gin.g-node.org/dervinism/minis-benchmarking-data) and place it inside the minis-benchmarking [repository](https://github.com/dervinism/minis-benchmarking).
 
 The analysis code in this repository also depends on the minis software source code. Therefore, you also need to download and install minis [repository](https://github.com/dervinism/minis/tree/main/source_code).
 
