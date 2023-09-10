@@ -2,7 +2,7 @@
 This repository contains benchamarking analysis Matlab code for [minis](insert the link here) software. It contains all the analysis code required to reproduce Figure 2 and Figures 4-15 of the minis benchmarking [manuscript](insert the link here).
 
 ## Installation Instructions
-Download the code repository and add it to the Matlab path, including its subfolders. Subsequently, download the minis benchmarking data [repository](insert the link here) and place it inside the minis-benchamarking [repository](insert the link here).
+Download the code repository and add it to the Matlab path, including its subfolders. If you are using Windows, place the code repository in your system's root folder, because ABF files have long names. Subsequently, download the minis benchmarking data [repository](insert the link here) and place it inside the minis-benchamarking [repository](insert the link here).
 
 The analysis code in this repository also depends on the minis software source code. Therefore, you also need to download and install minis [repository](insert the link here).
 
