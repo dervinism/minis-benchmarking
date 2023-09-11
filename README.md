@@ -1,3 +1,5 @@
+[![DOI](https://sandbox.zenodo.org/badge/687046158.svg)](https://sandbox.zenodo.org/badge/latestdoi/687046158)
+
 # minis-benchmarking
 This repository contains benchmarking analysis Matlab code for [minis](https://github.com/dervinism/minis) software. It contains all the analysis code required to reproduce Figure 2 and Figures 4-15 of the minis benchmarking [manuscript](https://doi.org/10.1101/2022.03.20.485046).
 
