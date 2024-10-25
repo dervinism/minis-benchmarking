@@ -1,0 +1,4 @@
+*.asv
+*.mat
+fitFigures/
+minis-benchmarking-data/
