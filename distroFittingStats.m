@@ -164,7 +164,8 @@ end
 
 
 %% Display distribution fitting performance for individual recordings: With stats
-for iRec = 9 %1:nRecs
+skewness = [];
+for iRec = 8 %1:nRecs
   % Load settings
   load(fullfile(fitFolder, recIDs{iRec}, 'settings.mat'));
 
@@ -189,6 +190,7 @@ for iRec = 9 %1:nRecs
     1000*excludedTimes.startGlitch, 1000*excludedTimes.endGlitch, ...
     fitData.detectionParametersSim.sampleInterval);
   eventArray = detectMinis(fitData.V, excludedTimes, fitData.detectionParametersSim, filtering, waveform, 8);
+  skewness = [skewness; (mean(eventArray(:,12)) - median(eventArray(:,12)))/std(eventArray(:,12))];
 
   % Load intermediate error bounds file
   distroFile = fullfile(fitFolder, recIDs{iRec}, 'intermediateErrorBounds');
@@ -822,8 +824,7 @@ for iRec = 9 %1:nRecs
   if ~exist(figFolder, 'dir')
     mkdir(figFolder);
   end
-  figName = fullfile(figFolder, figName);
-  savefig(fT, figName,'compact'); % Stop here
+  figName = fullfile(figFolder, figName);savefig(fT, figName,'compact'); % Stop here
   exportgraphics(fT,[figName, '.png'], 'Resolution',900);
   exportgraphics(fT,[figName, '.pdf'], 'ContentType','vector');
   close(fT);
@@ -964,3 +965,4 @@ for iRec = 9 %1:nRecs
   savefig(figRT, figName,'compact');
   close(figRT);
 end
+disp(skewness);

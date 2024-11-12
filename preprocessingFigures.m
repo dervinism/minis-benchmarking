@@ -6,142 +6,142 @@ markerSize = 2;
 sweepColour = 'y';
 transparency = 0.3;
 tTransparency = 1;
-rec = 11;
+rec = 13;
 
 
 
 %% Set the legend position
 if rec == 1
-  legendPosition1 = [0.80 0.880 0.1 0.035];
-  legendPosition2 = [0.80 0.825 0.1 0.035];
-  legendPosition3 = [0.80 0.685 0.1 0.035];
-  legendPosition5 = [0.77 0.390 0.1 0.035];
-  legendPosition6 = [0.77 0.250 0.1 0.035];
+  legendPosition1 = [0.760 0.960 0.1 0.035];
+  legendPosition2 = [0.800 0.825 0.1 0.035];
+  legendPosition3 = [0.800 0.685 0.1 0.035];
+  legendPosition5 = [0.770 0.390 0.1 0.035];
+  legendPosition6 = [0.770 0.250 0.1 0.035];
 elseif rec == 2
-  legendPosition1 = [0.84 0.880 0.1 0.035];
-  legendPosition2 = [0.84 0.825 0.1 0.035];
-  legendPosition3 = [0.84 0.685 0.1 0.035];
-  legendPosition5 = [0.81 0.390 0.1 0.035];
-  legendPosition6 = [0.81 0.250 0.1 0.035];
+  legendPosition1 = [0.800 0.900 0.1 0.035];
+  legendPosition2 = [0.840 0.825 0.1 0.035];
+  legendPosition3 = [0.840 0.685 0.1 0.035];
+  legendPosition5 = [0.810 0.390 0.1 0.035];
+  legendPosition6 = [0.810 0.250 0.1 0.035];
 elseif rec == 3
-  legendPosition1 = [0.72 0.880 0.1 0.035];
-  legendPosition2 = [0.72 0.825 0.1 0.035];
-  legendPosition3 = [0.72 0.685 0.1 0.035];
-  legendPosition5 = [0.69 0.390 0.1 0.035];
-  legendPosition6 = [0.69 0.250 0.1 0.035];
+  legendPosition1 = [0.680 0.900 0.1 0.035];
+  legendPosition2 = [0.720 0.825 0.1 0.035];
+  legendPosition3 = [0.720 0.685 0.1 0.035];
+  legendPosition5 = [0.690 0.390 0.1 0.035];
+  legendPosition6 = [0.690 0.250 0.1 0.035];
 elseif rec == 4
-  legendPosition1 = [0.80 0.880 0.1 0.035];
-  legendPosition2 = [0.80 0.825 0.1 0.035];
-  legendPosition3 = [0.80 0.685 0.1 0.035];
-  legendPosition5 = [0.77 0.390 0.1 0.035];
-  legendPosition6 = [0.77 0.250 0.1 0.035];
+  legendPosition1 = [0.760 0.900 0.1 0.035];
+  legendPosition2 = [0.800 0.825 0.1 0.035];
+  legendPosition3 = [0.800 0.685 0.1 0.035];
+  legendPosition5 = [0.770 0.390 0.1 0.035];
+  legendPosition6 = [0.770 0.250 0.1 0.035];
 elseif rec == 5
-  legendPosition1 = [0.84 0.880 0.1 0.035];
-  legendPosition2 = [0.84 0.825 0.1 0.035];
-  legendPosition3 = [0.84 0.685 0.1 0.035];
-  legendPosition5 = [0.81 0.390 0.1 0.035];
-  legendPosition6 = [0.81 0.250 0.1 0.035];
+  legendPosition1 = [0.800 0.900 0.1 0.035];
+  legendPosition2 = [0.840 0.825 0.1 0.035];
+  legendPosition3 = [0.840 0.685 0.1 0.035];
+  legendPosition5 = [0.810 0.390 0.1 0.035];
+  legendPosition6 = [0.810 0.250 0.1 0.035];
 elseif rec == 6
-  legendPosition1 = [0.84 0.880 0.1 0.035];
-  legendPosition2 = [0.84 0.825 0.1 0.035];
-  legendPosition3 = [0.84 0.685 0.1 0.035];
-  legendPosition5 = [0.81 0.390 0.1 0.035];
-  legendPosition6 = [0.81 0.250 0.1 0.035];
+  legendPosition1 = [0.800 0.900 0.1 0.035];
+  legendPosition2 = [0.840 0.825 0.1 0.035];
+  legendPosition3 = [0.840 0.685 0.1 0.035];
+  legendPosition5 = [0.810 0.390 0.1 0.035];
+  legendPosition6 = [0.810 0.250 0.1 0.035];
 elseif rec == 7
-  legendPosition1 = [0.79 0.880 0.1 0.035];
-  legendPosition2 = [0.79 0.825 0.1 0.035];
-  legendPosition3 = [0.79 0.685 0.1 0.035];
-  legendPosition5 = [0.76 0.390 0.1 0.035];
-  legendPosition6 = [0.76 0.250 0.1 0.035];
+  legendPosition1 = [0.750 0.960 0.1 0.035];
+  legendPosition2 = [0.790 0.825 0.1 0.035];
+  legendPosition3 = [0.790 0.685 0.1 0.035];
+  legendPosition5 = [0.760 0.390 0.1 0.035];
+  legendPosition6 = [0.760 0.250 0.1 0.035];
 elseif rec == 8
-  legendPosition1 = [0.81 0.880 0.1 0.035];
-  legendPosition2 = [0.81 0.825 0.1 0.035];
-  legendPosition3 = [0.81 0.685 0.1 0.035];
-  legendPosition5 = [0.78 0.390 0.1 0.035];
-  legendPosition6 = [0.78 0.250 0.1 0.035];
+  legendPosition1 = [0.770 0.900 0.1 0.035];
+  legendPosition2 = [0.810 0.825 0.1 0.035];
+  legendPosition3 = [0.810 0.685 0.1 0.035];
+  legendPosition5 = [0.780 0.390 0.1 0.035];
+  legendPosition6 = [0.780 0.250 0.1 0.035];
 elseif rec == 9
-  legendPosition1 = [0.80 0.880 0.1 0.035];
-  legendPosition2 = [0.80 0.825 0.1 0.035];
-  legendPosition3 = [0.80 0.685 0.1 0.035];
-  legendPosition5 = [0.77 0.390 0.1 0.035];
-  legendPosition6 = [0.77 0.250 0.1 0.035];
+  legendPosition1 = [0.750 0.960 0.1 0.035];
+  legendPosition2 = [0.800 0.825 0.1 0.035];
+  legendPosition3 = [0.800 0.685 0.1 0.035];
+  legendPosition5 = [0.770 0.390 0.1 0.035];
+  legendPosition6 = [0.770 0.250 0.1 0.035];
 elseif rec == 10
-  legendPosition1 = [0.77 0.880 0.1 0.035];
-  legendPosition2 = [0.77 0.825 0.1 0.035];
-  legendPosition3 = [0.77 0.685 0.1 0.035];
-  legendPosition5 = [0.74 0.390 0.1 0.035];
-  legendPosition6 = [0.74 0.250 0.1 0.035];
+  legendPosition1 = [0.730 0.960 0.1 0.035];
+  legendPosition2 = [0.770 0.825 0.1 0.035];
+  legendPosition3 = [0.770 0.685 0.1 0.035];
+  legendPosition5 = [0.740 0.390 0.1 0.035];
+  legendPosition6 = [0.740 0.250 0.1 0.035];
 elseif rec == 11
-  legendPosition1 = [0.80 0.880 0.1 0.035];
-  legendPosition2 = [0.80 0.825 0.1 0.035];
-  legendPosition3 = [0.80 0.685 0.1 0.035];
-  legendPosition5 = [0.77 0.390 0.1 0.035];
-  legendPosition6 = [0.77 0.250 0.1 0.035];
+  legendPosition1 = [0.765 0.854 0.1 0.035];
+  legendPosition2 = [0.800 0.825 0.1 0.035];
+  legendPosition3 = [0.800 0.685 0.1 0.035];
+  legendPosition5 = [0.770 0.390 0.1 0.035];
+  legendPosition6 = [0.770 0.250 0.1 0.035];
 elseif rec == 12
-  legendPosition1 = [0.85 0.880 0.1 0.035];
-  legendPosition2 = [0.85 0.825 0.1 0.035];
-  legendPosition3 = [0.85 0.685 0.1 0.035];
-  legendPosition5 = [0.82 0.390 0.1 0.035];
-  legendPosition6 = [0.82 0.250 0.1 0.035];
+  legendPosition1 = [0.800 0.960 0.1 0.035];
+  legendPosition2 = [0.850 0.825 0.1 0.035];
+  legendPosition3 = [0.850 0.685 0.1 0.035];
+  legendPosition5 = [0.820 0.390 0.1 0.035];
+  legendPosition6 = [0.820 0.250 0.1 0.035];
 elseif rec == 13
-  legendPosition1 = [0.81 0.880 0.1 0.035];
-  legendPosition2 = [0.81 0.825 0.1 0.035];
-  legendPosition3 = [0.81 0.685 0.1 0.035];
-  legendPosition5 = [0.78 0.390 0.1 0.035];
-  legendPosition6 = [0.78 0.250 0.1 0.035];
+  legendPosition1 = [0.770 0.960 0.1 0.035];
+  legendPosition2 = [0.810 0.825 0.1 0.035];
+  legendPosition3 = [0.810 0.685 0.1 0.035];
+  legendPosition5 = [0.780 0.390 0.1 0.035];
+  legendPosition6 = [0.780 0.250 0.1 0.035];
 elseif rec == 14
-  legendPosition1 = [0.74 0.880 0.1 0.035];
-  legendPosition2 = [0.74 0.825 0.1 0.035];
-  legendPosition3 = [0.74 0.685 0.1 0.035];
-  legendPosition5 = [0.72 0.390 0.1 0.035];
-  legendPosition6 = [0.72 0.160 0.1 0.035];
+  legendPosition1 = [0.700 0.960 0.1 0.035];
+  legendPosition2 = [0.740 0.825 0.1 0.035];
+  legendPosition3 = [0.740 0.685 0.1 0.035];
+  legendPosition5 = [0.720 0.390 0.1 0.035];
+  legendPosition6 = [0.720 0.160 0.1 0.035];
 end
 
 
 
 %% Set appropriate y-axis scales for diffefrent recordings
 if rec == 1
-  yLim = [-70.0  000  050  000  10.0  300  00.0
-          -67.0  250  300  100  20.0  390  10.0];
+  yLim = [-77.5  000  050  000  10.0  250  00.0
+          -52.5  250  300  100  20.0  450  10.0];
 elseif rec == 2
-  yLim = [-65.0  000  050  010  10.0  330  00.0
-          -56.0  150  200  076  16.0  470  10.0];
+  yLim = [-77.5  000  050  010  10.0  300  00.0
+          -52.5  150  200  076  16.0  500  10.0];
 elseif rec == 3
-  yLim = [-65.0  000  050  010  07.0  455  00.0
-          -58.0  150  200  081  14.0  580  10.0];
+  yLim = [-77.5  000  050  010  07.0  410  00.0
+          -52.5  150  200  081  14.0  610  10.0];
 elseif rec == 4
-  yLim = [-61.0  000  050  010  09.0  295  00.0
-          -54.0  200  200  047  12.0  350  10.0];
+  yLim = [-77.5  000  050  010  09.0  220  00.0
+          -52.5  200  200  047  12.0  420  10.0];
 elseif rec == 5
-  yLim = [-63.0  000  050  010  08.5  320  00.0
-          -61.0  180  200  050  11.4  400  10.0];
+  yLim = [-77.5  000  050  010  08.5  260  00.0
+          -52.5  180  200  050  11.4  460  10.0];
 elseif rec == 6
-  yLim = [-66.0  000  050  010  08.0  255  00.0
-          -57.5  200  200  090  11.0  350  10.0];
+  yLim = [-77.5  000  050  010  08.0  200  00.0
+          -52.5  200  200  090  11.0  400  10.0];
 elseif rec == 7
-  yLim = [-72.0  000  050  010  08.5  210  00.0
-          -69.0  300  250  070  13.0  320  10.0];
+  yLim = [-77.5  000  050  010  08.5  170  00.0
+          -52.5  300  250  070  13.0  370  10.0];
 elseif rec == 8
-  yLim = [-63.5  000  050  010  08.0  170  00.0
-          -54.0  300  270  050  10.5  210  10.1];
+  yLim = [-77.5  000  050  010  08.0  100  00.0
+          -52.5  300  270  050  10.5  300  10.1];
 elseif rec == 9
-  yLim = [-70.0  000  050  008  04.0  190  00.0
-          -63.7  250  230  031  09.5  395  10.0];
+  yLim = [-77.5  000  050  008  04.0  190  00.0
+          -52.5  250  230  031  09.5  395  10.0];
 elseif rec == 10
-  yLim = [-73.0  000  050  010  05.5  120  00.0
-          -65.5  300  280  045  09.5  200  10.0];
+  yLim = [-77.5  000  050  010  05.5  060  00.0
+          -52.5  300  280  045  09.5  260  10.0];
 elseif rec == 11
-  yLim = [-72.0  000  050  010  04.0  295  00.0
-          -65.5  300  210  082  13.0  440  10.0];
+  yLim = [-77.5  000  050  010  04.0  250  00.0
+          -52.5  300  210  082  13.0  450  10.0];
 elseif rec == 12
-  yLim = [-74.0  000  050  020  08.2  185  00.0
-          -66.0  200  150  080  16.0  255  10.0];
+  yLim = [-77.5  000  050  020  08.2  120  00.0
+          -52.5  200  150  080  16.0  320  10.0];
 elseif rec == 13
-  yLim = [-77.0  000  050  017  10.0  125  00.0
-          -69.0  500  300  082  17.0  200  10.0];
+  yLim = [-77.5  000  050  017  10.0  060  00.0
+          -52.5  500  300  082  17.0  260  10.0];
 elseif rec == 14
-  yLim = [-74.0  000  050  020  11.0  130  00.0
-          -66.0  300  250  085  19.0  210  10.0];
+  yLim = [-77.5  000  050  020  11.0  070  00.0
+          -52.5  300  250  085  19.0  270  10.0];
 end
 
 
@@ -370,26 +370,26 @@ if filterIndex
   upperMark = [yLim(2,pane) yLim(2,pane)];
   for iSweep = 1:size(targetSweeps,1)
     fileRange = [tSweep(targetSweeps(iSweep,1)-1) tSweep(targetSweeps(iSweep,2))];
-    c = ciplot(lowerMark, upperMark, fileRange, sweepColour, tTransparency);
-    uistack(c,'bottom')
+    c1 = ciplot(lowerMark, upperMark, fileRange, sweepColour, tTransparency);
+    uistack(c1,'bottom')
   end
   for iSweep = 1:size(sweeps,1)
     fileRange = [tSweep(max([1 sweeps(iSweep,1)-1])) tSweep(sweeps(iSweep,2))];
-    c = ciplot(lowerMark, upperMark, fileRange, sweepColour, transparency);
-    uistack(c,'bottom')
+    c2 = ciplot(lowerMark, upperMark, fileRange, sweepColour, transparency);
+    uistack(c2,'bottom')
   end
   for iSweep = 1:size(noiseSweeps,1)
     fileRange = [tSweep(noiseSweeps(iSweep,1)-1) tSweep(noiseSweeps(iSweep,2))];
-    c = ciplot(lowerMark, upperMark, fileRange, sweepColour, tTransparency);
-    uistack(c,'bottom')
+    c3 = ciplot(lowerMark, upperMark, fileRange, sweepColour, tTransparency);
+    uistack(c3,'bottom')
   end
   hold off
 
   ylim([yLim(1,pane) yLim(2,pane)]);
   set(gca, 'XColor', 'none');
   box(ax, 'off');
-  %legend([p1 p2],'Raw','Smoothed', 'Position',legendPosition1);
-  %legend('boxoff');
+  legend([c3 c2],'Fitting files','Extra testing files', 'Position',legendPosition1);
+  legend('boxoff');
 
 
 
@@ -484,7 +484,7 @@ if filterIndex
   ax = nexttile(pane);
   p1 = plot(tHalfF,Rseries, 'Color','g', 'LineStyle',':', 'Marker','o', 'MarkerSize',markerSize, ...
     'MarkerEdgeColor','g', 'MarkerFaceColor','g'); hold on
-  ylabel('R_{Ser} (M\Omega)', 'FontWeight','bold');
+  ylabel('\DeltaR_{Ser} (M\Omega)', 'FontWeight','bold');
 
   xTimeMarks = [APinfuse APblock minisInfuse];
   nTimeMarks = length(xTimeMarks);
