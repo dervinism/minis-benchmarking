@@ -15,6 +15,8 @@ parametric = false;
 normalise = false;
 mergeBins = false;
 match2mean = false;
+alpha = 0.05;
+nComparisons = 2;
 
 % Excluded times and excluded time durations per sweep
 excludedSweepTimes = {[0.00 1.10; 1.65 2.20];  % p103a
@@ -165,7 +167,7 @@ end
 
 %% Display distribution fitting performance for individual recordings: With stats
 skewness = [];
-for iRec = 8 %1:nRecs
+for iRec = 1:nRecs
   % Load settings
   load(fullfile(fitFolder, recIDs{iRec}, 'settings.mat'));
 
@@ -295,7 +297,7 @@ for iRec = 8 %1:nRecs
       ampInds = 1:numel(realEventAmpDistroMean);
     end
     realEventAmpDistroMean(realEventAmpDistroMean < 1e-9) = 1;
-    rtCutoff = 9;
+    rtCutoff = 10;
     rtInds = rtBins <= rtCutoff;
     realEventRTDistroMean(realEventRTDistroMean < 1e-9) = 1;
   else
@@ -387,7 +389,7 @@ for iRec = 8 %1:nRecs
     [~, bestRTDistroInd] = min(rtDistancesGrandSum);
     bestRTDistroDistances = rtDistancesSum(bestRTDistroInd,:);
     [~, worstRTDistroInd] = max(rtDistancesGrandSum);
-    worstRTDistroDistances = ampDistancesSum(worstRTDistroInd,:);
+    worstRTDistroDistances = rtDistancesSum(worstRTDistroInd,:);
   end
   ampDistancesGrandSumSim = sum(ampDistancesSumSim,'omitnan');
   rtDistancesGrandSumSim = sum(rtDistancesSumSim,'omitnan');
@@ -396,7 +398,7 @@ for iRec = 8 %1:nRecs
     [~, pvalUnderfitTestAmp,~,stats] = ttest2(worstAmpDistroDistances', ampDistancesSumSim', 'Vartype','unequal');
     fUnderfitTestAmp = stats.tstat;
     dfUnderfitTestAmp = stats.df;
-    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) > mean(worstAmpDistroDistances)) && pvalUnderfitTestAmp < 0.1
+    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) > mean(worstAmpDistroDistances)) && pvalUnderfitTestAmp < 2*alpha/nComparisons
       underfitAmp = true;
     else
       underfitAmp = false;
@@ -404,7 +406,7 @@ for iRec = 8 %1:nRecs
     [~, pvalOverfitTestAmp,~,stats] = ttest2(bestAmpDistroDistances', ampDistancesSumSim', 'Vartype','unequal');
     fOverfitTestAmp = stats.tstat;
     dfOverfitTestAmp = stats.df;
-    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) < mean(bestAmpDistroDistances)) && pvalOverfitTestAmp < 0.1
+    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) < mean(bestAmpDistroDistances)) && pvalOverfitTestAmp < 2*alpha/nComparisons
       overfitAmp = true;
     else
       overfitAmp = false;
@@ -413,7 +415,7 @@ for iRec = 8 %1:nRecs
     [pvalUnderfitTestAmp,~,stats] = ranksum(ampDistancesSumSim', worstAmpDistroDistances', ...
       'tail','right', 'method','exact');
     fUnderfitTestAmp = stats.ranksum;
-    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) > median(worstAmpDistroDistances)) && pvalUnderfitTestAmp < 0.05
+    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) > median(worstAmpDistroDistances)) && pvalUnderfitTestAmp < alpha/nComparisons
       underfitAmp = true;
     else
       underfitAmp = false;
@@ -421,7 +423,7 @@ for iRec = 8 %1:nRecs
     [pvalOverfitTestAmp,~,stats] = ranksum(ampDistancesSumSim', bestAmpDistroDistances', ...
       'tail','left', 'method','exact');
     fOverfitTestAmp = stats.ranksum;
-    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) < median(bestAmpDistroDistances)) && pvalOverfitTestAmp < 0.05
+    if (ampDistancesGrandSumSim/numel(ampDistancesSumSim) < median(bestAmpDistroDistances)) && pvalOverfitTestAmp < alpha/nComparisons
       overfitAmp = true;
     else
       overfitAmp = false;
@@ -435,7 +437,7 @@ for iRec = 8 %1:nRecs
     [~, pvalUnderfitTestRT,~,stats] = ttest2(worstRTDistroDistances', rtDistancesSumSim', 'Vartype','unequal');
     fUnderfitTestRT = stats.tstat;
     dfUnderfitTestRT = stats.df;
-    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) > mean(worstRTDistroDistances)) && pvalUnderfitTestRT < 0.1
+    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) > mean(worstRTDistroDistances)) && pvalUnderfitTestRT < 2*alpha/nComparisons
       underfitRT = true;
     else
       underfitRT = false;
@@ -443,7 +445,7 @@ for iRec = 8 %1:nRecs
     [~, pvalOverfitTestRT,~,stats] = ttest2(bestRTDistroDistances', rtDistancesSumSim', 'Vartype','unequal');
     fOverfitTestRT = stats.tstat;
     dfOverfitTestRT = stats.df;
-    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) < mean(bestRTDistroDistances)) && pvalOverfitTestRT < 0.1
+    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) < mean(bestRTDistroDistances)) && pvalOverfitTestRT < 2*alpha/nComparisons
       overfitRT = true;
     else
       overfitRT = false;
@@ -452,7 +454,7 @@ for iRec = 8 %1:nRecs
     [pvalUnderfitTestRT,~,stats] = ranksum(rtDistancesSumSim', worstRTDistroDistances', ...
       'tail','right', 'method','exact');
     fUnderfitTestRT = stats.ranksum;
-    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) > median(worstRTDistroDistances)) && pvalUnderfitTestRT < 0.05
+    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) > median(worstRTDistroDistances)) && pvalUnderfitTestRT < alpha/nComparisons
       underfitRT = true;
     else
       underfitRT = false;
@@ -460,7 +462,7 @@ for iRec = 8 %1:nRecs
     [pvalOverfitTestRT,~,stats] = ranksum(rtDistancesSumSim', bestRTDistroDistances', ...
       'tail','left', 'method','exact');
     fOverfitTestRT = stats.ranksum;
-    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) < median(bestRTDistroDistances)) && pvalOverfitTestRT < 0.05
+    if (rtDistancesGrandSumSim/numel(rtDistancesSumSim) < median(bestRTDistroDistances)) && pvalOverfitTestRT < alpha/nComparisons
       overfitRT = true;
     else
       overfitRT = false;
@@ -836,17 +838,23 @@ for iRec = 8 %1:nRecs
   [~, rtSortOrder] = sort(median(rtDistancesSum,2),'descend');
   for iFile = 1:size(ampDistancesSum,1)
     if iFile == 1
-      ampSADMatrix(iFile, 2:end) = [ampDistancesSum(ampSortOrder(iFile),:) median(ampDistancesSum(ampSortOrder(iFile),:))];
-      rtSADMatrix(iFile, 2:end) = [rtDistancesSum(rtSortOrder(iFile),:) median(rtDistancesSum(rtSortOrder(iFile),:))];
+      fileAmpSADs = ampDistancesSum(iFile,:);
+      ampSADMatrix(iFile, 2:end) = [fileAmpSADs median(fileAmpSADs)];
+      fileRTSADs = rtDistancesSum(iFile,:);
+      rtSADMatrix(iFile, 2:end) = [fileRTSADs median(fileRTSADs)];
     else
+      fileAmpSADs = ampDistancesSum(iFile,:);
       ampSADMatrix(iFile, [1:iFile-1 iFile+1:size(ampDistancesSum,2)+2]) = ...
-        [ampDistancesSum(ampSortOrder(iFile),:) median(ampDistancesSum(ampSortOrder(iFile),:))];
+        [fileAmpSADs median(fileAmpSADs)];
+      fileRTSADs = rtDistancesSum(iFile,:);
       rtSADMatrix(iFile, [1:iFile-1 iFile+1:size(rtDistancesSum,2)+2]) = ...
-        [rtDistancesSum(rtSortOrder(iFile),:) median(rtDistancesSum(rtSortOrder(iFile),:))];
+        [fileRTSADs median(fileRTSADs)];
     end
   end
-  ampSADMatrix = [round(triu(ampSADMatrix(:,1:end-1),1)' + triu(ampSADMatrix(:,1:end-1),1)) round(ampSADMatrix(:,end),1,'decimals')];
-  rtSADMatrix = [round(triu(rtSADMatrix(:,1:end-1),1)' + triu(rtSADMatrix(:,1:end-1),1)) round(rtSADMatrix(:,end),1,'decimals')];
+  ampSADMatrix = round(ampSADMatrix(ampSortOrder, ampSortOrder));
+  ampSADMatrix(isnan(ampSADMatrix)) = 0;
+  rtSADMatrix = round(rtSADMatrix(rtSortOrder, rtSortOrder));
+  rtSADMatrix(isnan(rtSADMatrix)) = 0;
 
   % Display real-real SAD tables
   cellFormat = 'longG';
@@ -965,4 +973,4 @@ for iRec = 8 %1:nRecs
   savefig(figRT, figName,'compact');
   close(figRT);
 end
-disp(skewness);
+%disp(skewness);

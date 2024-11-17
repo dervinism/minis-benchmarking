@@ -223,303 +223,303 @@ end
 %% Incidence rates
 [meanRates, meanRateCIs] = datamean([thrIncidenceRates; subtractedIncidenceRates; fittedIncidenceRates]');
 meanRateCIs = meanRates + meanRateCIs;
-fH = figure; plot([1 1; 3 3], [min(externalIncidenceRates) max(externalIncidenceRates); ...
-                               min(externalIncidenceRates) max(externalIncidenceRates)], ...
-                               'r:', 'LineWidth',1.25);
-hold on; plot([thrIncidenceRates; subtractedIncidenceRates; fittedIncidenceRates], ...
-  'Color',[0.7 0.7 0.7]);
-plot(meanRates, 'k.', 'MarkerSize',10);
-plot([1 2 3; 1 2 3], meanRateCIs, 'k-', 'LineWidth',1.25);
-xlim([0.9 3.1]);
-%figure; qqplot(thrIncidenceRates);
-%figure; qqplot(subtractedIncidenceRates);
-%figure; qqplot(fittedIncidenceRates);
-
-% Label the figure and axes
-fontSize = 18;
-fTitle = 'Minis'' incidence rates';
-title(fTitle, 'FontSize',fontSize, 'FontWeight','bold');
-ylabel('Incidence rate (minis/s)', 'FontSize',fontSize, 'FontWeight','bold')
-
-% Tidy the figure
-set(fH, 'Color', 'white');
-ax = gca;
-set(ax, 'box', 'off');
-set(ax, 'TickDir', 'out');
-set(ax, 'XTick', 1:3);
-set(ax, 'XTickLabel', {'Thresholded','Subtracted','Fitted'});
-yTicks = get(ax, 'YTick');
-if numel(yTicks) > 8
-  set(ax, 'YTick', yTicks(1:2:end));
-end
-ax.FontSize = fontSize - 4;
-set(get(ax, 'XAxis'), 'FontWeight', 'bold');
-set(get(ax, 'YAxis'), 'FontWeight', 'bold');
-set(ax,'linewidth',2);
-
-% Save the figure
-if ~exist(figFolder, 'dir')
-  mkdir(figFolder);
-end
-figName = strrep(fTitle, ' ', '_');
-figName = strrep(figName, '(', '_');
-figName = strrep(figName, ')', '_');
-figName = strrep(figName, '/', '_');
-figName = strrep(figName, '.', '_');
-figName = fullfile(figFolder, figName);
-savefig(fH, figName,'compact');
-title('');
-saveas(fH, figName, 'png');
-saveas(fH, figName, 'pdf');
-close(fH);
-
-% stats
-[~, pval, ~, stats] = ttest(thrIncidenceRates, subtractedIncidenceRates);
-disp(['Thresholded vs subtracted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
-[~, pval, ~, stats] = ttest(subtractedIncidenceRates, fittedIncidenceRates);
-disp(['Subtracted vs fitted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
-[~, pval, ~, stats] = ttest(thrIncidenceRates, fittedIncidenceRates);
-disp(['Thresholded vs fitted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
-
-
-% %% Draw individual 2D (amplitudes vs rise times) minis distributions
-% for iRec = 8 %1:nRecs
-%   fontSize = 15.5;
-%   recFolder = fullfile(fitFolder, recIDs{iRec});
-%   simFile = dir(fullfile(recFolder, 'fit*.mat'));
-%   simFile = fullfile(recFolder, simFile.name);
-%   fitData = load(simFile);
-%   fH = figure; histogram2(fitData.shapes(:,2), fitData.shapes(:,3), ...
-%     ampEdges, rtEdges, 'FaceColor','flat');
-%   xlim([0 0.5])
-%   ylim([0 10])
+% fH = figure; plot([1 1; 3 3], [min(externalIncidenceRates) max(externalIncidenceRates); ...
+%                                min(externalIncidenceRates) max(externalIncidenceRates)], ...
+%                                'r:', 'LineWidth',1.25);
+% hold on; plot([thrIncidenceRates; subtractedIncidenceRates; fittedIncidenceRates], ...
+%   'Color',[0.7 0.7 0.7]);
+% plot(meanRates, 'k.', 'MarkerSize',10);
+% plot([1 2 3; 1 2 3], meanRateCIs, 'k-', 'LineWidth',1.25);
+% xlim([0.9 3.1]);
+% %figure; qqplot(thrIncidenceRates);
+% %figure; qqplot(subtractedIncidenceRates);
+% %figure; qqplot(fittedIncidenceRates);
 % 
-%   % Label the figure and axes
-%   fTitle = ['Minis distribution for recording ' recIDs{iRec}];
-%   title(fTitle, 'FontSize',fontSize, 'FontWeight','bold');
-%   xlabel('Amplitude (mV)', 'FontSize',fontSize, 'FontWeight','bold')
-%   ylabel('10-90% rise time (ms)', 'FontSize',fontSize, 'FontWeight','bold')
-%   zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
+% % Label the figure and axes
+% fontSize = 18;
+% fTitle = 'Minis'' incidence rates';
+% title(fTitle, 'FontSize',fontSize, 'FontWeight','bold');
+% ylabel('Incidence rate (minis/s)', 'FontSize',fontSize, 'FontWeight','bold')
 % 
-%   % Tidy the figure
-%   set(fH, 'Color', 'white');
-%   ax = gca;
-%   set(ax, 'box', 'off');
-%   set(ax, 'TickDir', 'out');
-%   yTicks = get(ax, 'YTick');
-%   if numel(yTicks) > 8
-%     set(ax, 'YTick', yTicks(1:2:end));
-%   end
-%   ax.FontSize = fontSize - 2;
-%   set(get(ax, 'XAxis'), 'FontWeight', 'bold');
-%   set(get(ax, 'YAxis'), 'FontWeight', 'bold');
-%   set(get(ax, 'ZAxis'), 'FontWeight', 'bold');
-%   set(ax,'linewidth',1.5);
-% 
-%   % Save the figure
-%   if ~exist(figFolder, 'dir')
-%     mkdir(figFolder);
-%   end
-%   figName = strrep(fTitle, ' ', '_');
-%   figName = strrep(figName, '(', '_');
-%   figName = strrep(figName, ')', '_');
-%   figName = strrep(figName, '/', '_');
-%   figName = strrep(figName, '.', '_');
-%   figName = fullfile(figFolder, figName);
-%   savefig(fH, figName,'compact'); % Stop here
-%   %title('');
-%   saveas(fH, figName, 'png');
-%   saveas(fH, figName, 'pdf');
-% 
-%   % Rotate and save the figure again
-%   view(37.5, 30);
-%   figName = [figName '_rotated']; %#ok<*AGROW>
-%   savefig(fH, figName,'compact');
-%   saveas(fH, figName, 'png');
-%   saveas(fH, figName, 'pdf');
-%   close(fH);
-% 
-%   % Create the multipanelled figure
-%   fT = figure; tiledlayout(2,2, 'Padding','tight', 'TileSpacing','compact')
-%   set(fT, 'Position',[100 0 952 952]);
-%   set(fT, 'Color', [1, 1, 1]);
-% 
-%   % 2D with default view
-%   ax1 = nexttile(1);
-%   histogram2(fitData.shapes(:,2).*1000, fitData.shapes(:,3), ...
-%     ampEdges.*1000, rtEdges, 'FaceColor','flat');
-%   xlim([0 400])
-%   ylim([0 10])
-% 
-%   xlh = xlabel('Amplitude (\muV)', 'FontSize',fontSize-1, 'FontWeight','bold');
-%   xLabelPos = xlh.Position;
-%   set(xlh, 'Rotation',21, 'Position',[xLabelPos(1) -0.6 xLabelPos(3)]);
-%   ylh = ylabel('10-90% rise time (ms)', 'FontSize',fontSize-1, 'FontWeight','bold');
-%   yLabelPos = ylh.Position;
-%   set(ylh, 'Rotation',-34, 'VerticalAlignment','middle', ...
-%     'HorizontalAlignment','right', 'Position',[0 3 yLabelPos(3)]);
-%   zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
-% 
-%   set(ax1, 'box', 'off');
-%   set(ax1, 'TickDir', 'out');
-%   yTicks = get(ax1, 'YTick');
-%   if numel(yTicks) > 8
-%     set(ax1, 'YTick', yTicks(1:2:end));
-%   end
-%   ax1.FontSize = fontSize - 2;
-%   set(get(ax1, 'XAxis'), 'FontWeight', 'bold');
-%   set(get(ax1, 'YAxis'), 'FontWeight', 'bold');
-%   set(get(ax1, 'ZAxis'), 'FontWeight', 'bold');
-%   set(ax1,'linewidth',1.5);
-% 
-%   xLim = xlim;
-%   xAxisSize = xLim(2) - xLim(1);
-%   yLim = ylim;
-%   yAxisSize = yLim(2) - yLim(1);
-%   zLim = zlim;
-%   zAxisSize = zLim(2) - zLim(1);
-%   if iRec == 1
-%     text(0*xAxisSize, 1.5*yAxisSize, 1.06*zAxisSize, ...
-%       'A', 'FontSize',26, 'FontWeight','bold');
-%   else
-%     text(0*xAxisSize, 1.39*yAxisSize, 1.115*zAxisSize, ...
-%       'A', 'FontSize',26, 'FontWeight','bold');
-%   end
-% 
-%   % 2D with view rotation
-%   ax2 = nexttile(2);
-%   histogram2(fitData.shapes(:,2).*1000, fitData.shapes(:,3), ...
-%     ampEdges.*1000, rtEdges, 'FaceColor','flat');
-%   xlim([0 400])
-%   ylim([0 10])
-%   view(37.5, 30);
-% 
-%   xlh = xlabel('Amplitude (\muV)', 'FontSize',fontSize-1, 'FontWeight','bold');
-%   xLabelPos = xlh.Position;
-%   set(xlh, 'Rotation',-20, 'Position',[xLabelPos(1) xLabelPos(2) xLabelPos(3)]);
-%   ylh = ylabel('10-90% rise time (ms)', 'FontSize',fontSize-1, 'FontWeight','bold');
-%   yLabelPos = ylh.Position;
-%   set(ylh, 'Rotation',33, 'VerticalAlignment','middle', ...
-%     'HorizontalAlignment','right', 'Position',[370 12.4 yLabelPos(3)]);
-%   zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
-% 
-%   set(ax2, 'box', 'off');
-%   set(ax2, 'TickDir', 'out');
-%   yTicks = get(ax2, 'YTick');
-%   if numel(yTicks) > 8
-%     set(ax2, 'YTick', yTicks(1:2:end));
-%   end
-%   ax2.FontSize = fontSize - 2;
-%   set(get(ax2, 'XAxis'), 'FontWeight', 'bold');
-%   set(get(ax2, 'YAxis'), 'FontWeight', 'bold');
-%   set(get(ax2, 'ZAxis'), 'FontWeight', 'bold');
-%   set(ax2,'linewidth',1.5);
-% 
-%   xLim = xlim;
-%   xAxisSize = xLim(2) - xLim(1);
-%   yLim = ylim;
-%   yAxisSize = yLim(2) - yLim(1);
-%   zLim = zlim;
-%   zAxisSize = zLim(2) - zLim(1);
-%   text(-0.3*xAxisSize, 0*yAxisSize, 1.29*zAxisSize, ...
-%     'B', 'FontSize',26, 'FontWeight','bold');
-% 
-%   % Marginal amplitude distribution
-%   fontSize = 18;
-%   ax3 = nexttile(3);
-%   xLim = [0 400];
-%   xLabel = 'Amplitude (\muV)';
-%   yLabel = 'Count';
-%   ampHisto1D = histcounts(fitData.shapes(:,2).*1000, ampEdges.*1000);
-%   bins = ampEdges(2:end)-ampBinSize/2;
-%   ampBinsInterp = bins(1):ampBinSize/10:bins(end);
-%   ampHisto1DInterp = interp1(bins.*1000, ampHisto1D, ampBinsInterp.*1000, 'linear');
-%   smoothSpan = 5;
-%   ampHisto1DInterp = smooth(ampHisto1DInterp, smoothSpan);
-%   plot(ampBinsInterp.*1000, ampHisto1DInterp, 'b', 'LineWidth',1.25); hold off
-%   xlim(xLim)
-%   ylim([0 max(ampHisto1DInterp)+10])
-% 
-%   xlabel(xLabel, 'FontSize',fontSize, 'FontWeight','bold')
-%   ylabel(yLabel, 'FontSize',fontSize, 'FontWeight','bold')
-% 
-%   set(ax3, 'box', 'off');
-%   set(ax3, 'TickDir', 'out');
-%   yTicks = get(ax3, 'YTick');
-%   if numel(yTicks) > 8
-%     set(ax3, 'YTick', yTicks(1:2:end));
-%   end
-%   ax3.FontSize = fontSize - 4;
-%   set(get(ax3, 'XAxis'), 'FontWeight','bold');
-%   set(get(ax3, 'YAxis'), 'FontWeight','bold');
-%   set(ax3,'linewidth',1.5);
-% 
-%   xAxisSize = xLim(2) - xLim(1);
-%   yLim = ylim;
-%   yAxisSize = yLim(2) - yLim(1);
-%   if yLim(2) < 100
-%     text(-0.17*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
-%   elseif yLim(2) < 1000
-%     text(-0.19*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
-%   else
-%     text(-0.22*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
-%   end
-% 
-%   % Marginal rise time distribution
-%   ax4 = nexttile(4);
-%   xLim = [0 10];
-%   xLabel = '10-90% rise time (ms)';
-%   yLabel = 'Count';
-%   rtHisto1D = histcounts(fitData.shapes(:,3), rtEdges);
-%   bins = rtEdges(2:end)-rtBinSize/2;
-%   rtBinsInterp = bins(1):rtBinSize/10:bins(end);
-%   rtHisto1DInterp = interp1(bins, rtHisto1D, rtBinsInterp, 'linear');
-%   smoothSpan = 5;
-%   rtHisto1DInterp = smooth(rtHisto1DInterp, smoothSpan);
-%   plot(rtBinsInterp, rtHisto1DInterp, 'b', 'LineWidth',1.25); hold off
-%   xlim(xLim)
-%   ylim([0 max(rtHisto1DInterp)+10])
-% 
-%   xlabel(xLabel, 'FontSize',fontSize, 'FontWeight','bold')
-%   ylabel(yLabel, 'FontSize',fontSize, 'FontWeight','bold')
-% 
-%   set(ax4, 'box', 'off');
-%   set(ax4, 'TickDir', 'out');
-%   yTicks = get(ax4, 'YTick');
-%   if numel(yTicks) > 8
-%     set(ax4, 'YTick', yTicks(1:2:end));
-%   end
-%   ax4.FontSize = fontSize - 4;
-%   set(get(ax4, 'XAxis'), 'FontWeight','bold');
-%   set(get(ax4, 'YAxis'), 'FontWeight','bold');
-%   set(ax4,'linewidth',1.5);
-% 
-%   xAxisSize = xLim(2) - xLim(1);
-%   yLim = ylim;
-%   yAxisSize = yLim(2) - yLim(1);
-%   if yLim(2) < 1000
-%     text(-0.19*xAxisSize, yLim(2)-0.025*yAxisSize, 'D', 'FontSize',26, 'FontWeight','bold');
-%   else
-%     text(-0.22*xAxisSize, yLim(2)-0.025*yAxisSize, 'D', 'FontSize',26, 'FontWeight','bold');
-%   end
-% 
-%   % Save the figure
-%   figName = ['SourceDistros4pFigures_' recIDs{iRec}];
-%   if ~exist(figFolder, 'dir')
-%     mkdir(figFolder);
-%   end
-%   figName = strrep(figName, ' ', '_');
-%   figName = strrep(figName, '(', '_');
-%   figName = strrep(figName, ')', '_');
-%   figName = strrep(figName, '/', '_');
-%   figName = strrep(figName, '.', '_');
-%   figName = fullfile(figFolder, figName);
-%   savefig(fT, figName,'compact');
-%   exportgraphics(fT,[figName, '.png'], 'Resolution',900);
-%   exportgraphics(fT,[figName, '.pdf'], 'ContentType','vector');
-%   close(fT);
+% % Tidy the figure
+% set(fH, 'Color', 'white');
+% ax = gca;
+% set(ax, 'box', 'off');
+% set(ax, 'TickDir', 'out');
+% set(ax, 'XTick', 1:3);
+% set(ax, 'XTickLabel', {'Thresholded','Subtracted','Fitted'});
+% yTicks = get(ax, 'YTick');
+% if numel(yTicks) > 8
+%   set(ax, 'YTick', yTicks(1:2:end));
 % end
+% ax.FontSize = fontSize - 4;
+% set(get(ax, 'XAxis'), 'FontWeight', 'bold');
+% set(get(ax, 'YAxis'), 'FontWeight', 'bold');
+% set(ax,'linewidth',2);
 % 
+% % Save the figure
+% if ~exist(figFolder, 'dir')
+%   mkdir(figFolder);
+% end
+% figName = strrep(fTitle, ' ', '_');
+% figName = strrep(figName, '(', '_');
+% figName = strrep(figName, ')', '_');
+% figName = strrep(figName, '/', '_');
+% figName = strrep(figName, '.', '_');
+% figName = fullfile(figFolder, figName);
+% savefig(fH, figName,'compact');
+% title('');
+% saveas(fH, figName, 'png');
+% saveas(fH, figName, 'pdf');
+% close(fH);
+% 
+% % stats
+% [~, pval, ~, stats] = ttest(thrIncidenceRates, subtractedIncidenceRates);
+% disp(['Thresholded vs subtracted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
+% [~, pval, ~, stats] = ttest(subtractedIncidenceRates, fittedIncidenceRates);
+% disp(['Subtracted vs fitted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
+% [~, pval, ~, stats] = ttest(thrIncidenceRates, fittedIncidenceRates);
+% disp(['Thresholded vs fitted incidence rates: p=' num2str(pval), ' t=' num2str(stats.tstat)]);
+% 
+
+%% Draw individual 2D (amplitudes vs rise times) minis distributions
+for iRec = 9 %1:nRecs
+  fontSize = 15.5;
+  recFolder = fullfile(fitFolder, recIDs{iRec});
+  simFile = dir(fullfile(recFolder, 'fit*.mat'));
+  simFile = fullfile(recFolder, simFile.name);
+  fitData = load(simFile);
+  fH = figure; histogram2(fitData.shapes(:,2), fitData.shapes(:,3), ...
+    ampEdges, rtEdges, 'FaceColor','flat');
+  xlim([0 0.5])
+  ylim([0 10])
+
+  % Label the figure and axes
+  fTitle = ['Minis distribution for recording ' recIDs{iRec}];
+  title(fTitle, 'FontSize',fontSize, 'FontWeight','bold');
+  xlabel('Amplitude (mV)', 'FontSize',fontSize, 'FontWeight','bold')
+  ylabel('10-90% rise time (ms)', 'FontSize',fontSize, 'FontWeight','bold')
+  zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
+
+  % Tidy the figure
+  set(fH, 'Color', 'white');
+  ax = gca;
+  set(ax, 'box', 'off');
+  set(ax, 'TickDir', 'out');
+  yTicks = get(ax, 'YTick');
+  if numel(yTicks) > 8
+    set(ax, 'YTick', yTicks(1:2:end));
+  end
+  ax.FontSize = fontSize - 2;
+  set(get(ax, 'XAxis'), 'FontWeight', 'bold');
+  set(get(ax, 'YAxis'), 'FontWeight', 'bold');
+  set(get(ax, 'ZAxis'), 'FontWeight', 'bold');
+  set(ax,'linewidth',1.5);
+
+  % Save the figure
+  if ~exist(figFolder, 'dir')
+    mkdir(figFolder);
+  end
+  figName = strrep(fTitle, ' ', '_');
+  figName = strrep(figName, '(', '_');
+  figName = strrep(figName, ')', '_');
+  figName = strrep(figName, '/', '_');
+  figName = strrep(figName, '.', '_');
+  figName = fullfile(figFolder, figName);
+  savefig(fH, figName,'compact'); % Stop here
+  %title('');
+  saveas(fH, figName, 'png');
+  saveas(fH, figName, 'pdf');
+
+  % Rotate and save the figure again
+  view(37.5, 30);
+  figName = [figName '_rotated']; %#ok<*AGROW>
+  savefig(fH, figName,'compact');
+  saveas(fH, figName, 'png');
+  saveas(fH, figName, 'pdf');
+  close(fH);
+
+  % Create the multipanelled figure
+  fT = figure; tiledlayout(2,2, 'Padding','tight', 'TileSpacing','compact')
+  set(fT, 'Position',[100 0 952 952]);
+  set(fT, 'Color', [1, 1, 1]);
+
+  % 2D with default view
+  ax1 = nexttile(1);
+  histogram2(fitData.shapes(:,2).*1000, fitData.shapes(:,3), ...
+    ampEdges.*1000, rtEdges, 'FaceColor','flat');
+  xlim([0 400])
+  ylim([0 10])
+
+  xlh = xlabel('Amplitude (\muV)', 'FontSize',fontSize-1, 'FontWeight','bold');
+  xLabelPos = xlh.Position;
+  set(xlh, 'Rotation',21, 'Position',[xLabelPos(1) -0.6 xLabelPos(3)]);
+  ylh = ylabel('10-90% rise time (ms)', 'FontSize',fontSize-1, 'FontWeight','bold');
+  yLabelPos = ylh.Position;
+  set(ylh, 'Rotation',-34, 'VerticalAlignment','middle', ...
+    'HorizontalAlignment','right', 'Position',[0 3 yLabelPos(3)]);
+  zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
+
+  set(ax1, 'box', 'off');
+  set(ax1, 'TickDir', 'out');
+  yTicks = get(ax1, 'YTick');
+  if numel(yTicks) > 8
+    set(ax1, 'YTick', yTicks(1:2:end));
+  end
+  ax1.FontSize = fontSize - 2;
+  set(get(ax1, 'XAxis'), 'FontWeight', 'bold');
+  set(get(ax1, 'YAxis'), 'FontWeight', 'bold');
+  set(get(ax1, 'ZAxis'), 'FontWeight', 'bold');
+  set(ax1,'linewidth',1.5);
+
+  xLim = xlim;
+  xAxisSize = xLim(2) - xLim(1);
+  yLim = ylim;
+  yAxisSize = yLim(2) - yLim(1);
+  zLim = zlim;
+  zAxisSize = zLim(2) - zLim(1);
+  if iRec == 1
+    text(0*xAxisSize, 1.5*yAxisSize, 1.06*zAxisSize, ...
+      'A', 'FontSize',26, 'FontWeight','bold');
+  else
+    text(0*xAxisSize, 1.39*yAxisSize, 1.115*zAxisSize, ...
+      'A', 'FontSize',26, 'FontWeight','bold');
+  end
+
+  % 2D with view rotation
+  ax2 = nexttile(2);
+  histogram2(fitData.shapes(:,2).*1000, fitData.shapes(:,3), ...
+    ampEdges.*1000, rtEdges, 'FaceColor','flat');
+  xlim([0 400])
+  ylim([0 10])
+  view(37.5, 30);
+
+  xlh = xlabel('Amplitude (\muV)', 'FontSize',fontSize-1, 'FontWeight','bold');
+  xLabelPos = xlh.Position;
+  set(xlh, 'Rotation',-20, 'Position',[xLabelPos(1) xLabelPos(2) xLabelPos(3)]);
+  ylh = ylabel('10-90% rise time (ms)', 'FontSize',fontSize-1, 'FontWeight','bold');
+  yLabelPos = ylh.Position;
+  set(ylh, 'Rotation',33, 'VerticalAlignment','middle', ...
+    'HorizontalAlignment','right', 'Position',[370 12.4 yLabelPos(3)]);
+  zlabel('Count', 'FontSize',fontSize, 'FontWeight','bold')
+
+  set(ax2, 'box', 'off');
+  set(ax2, 'TickDir', 'out');
+  yTicks = get(ax2, 'YTick');
+  if numel(yTicks) > 8
+    set(ax2, 'YTick', yTicks(1:2:end));
+  end
+  ax2.FontSize = fontSize - 2;
+  set(get(ax2, 'XAxis'), 'FontWeight', 'bold');
+  set(get(ax2, 'YAxis'), 'FontWeight', 'bold');
+  set(get(ax2, 'ZAxis'), 'FontWeight', 'bold');
+  set(ax2,'linewidth',1.5);
+
+  xLim = xlim;
+  xAxisSize = xLim(2) - xLim(1);
+  yLim = ylim;
+  yAxisSize = yLim(2) - yLim(1);
+  zLim = zlim;
+  zAxisSize = zLim(2) - zLim(1);
+  text(-0.3*xAxisSize, 0*yAxisSize, 1.29*zAxisSize, ...
+    'B', 'FontSize',26, 'FontWeight','bold');
+
+  % Marginal amplitude distribution
+  fontSize = 18;
+  ax3 = nexttile(3);
+  xLim = [0 400];
+  xLabel = 'Amplitude (\muV)';
+  yLabel = 'Count';
+  ampHisto1D = histcounts(fitData.shapes(:,2).*1000, ampEdges.*1000);
+  bins = ampEdges(2:end)-ampBinSize/2;
+  ampBinsInterp = bins(1):ampBinSize/10:bins(end);
+  ampHisto1DInterp = interp1(bins.*1000, ampHisto1D, ampBinsInterp.*1000, 'linear');
+  smoothSpan = 5;
+  ampHisto1DInterp = smooth(ampHisto1DInterp, smoothSpan);
+  plot(ampBinsInterp.*1000, ampHisto1DInterp, 'b', 'LineWidth',1.25); hold off
+  xlim(xLim)
+  ylim([0 max(ampHisto1DInterp)+10])
+
+  xlabel(xLabel, 'FontSize',fontSize, 'FontWeight','bold')
+  ylabel(yLabel, 'FontSize',fontSize, 'FontWeight','bold')
+
+  set(ax3, 'box', 'off');
+  set(ax3, 'TickDir', 'out');
+  yTicks = get(ax3, 'YTick');
+  if numel(yTicks) > 8
+    set(ax3, 'YTick', yTicks(1:2:end));
+  end
+  ax3.FontSize = fontSize - 4;
+  set(get(ax3, 'XAxis'), 'FontWeight','bold');
+  set(get(ax3, 'YAxis'), 'FontWeight','bold');
+  set(ax3,'linewidth',1.5);
+
+  xAxisSize = xLim(2) - xLim(1);
+  yLim = ylim;
+  yAxisSize = yLim(2) - yLim(1);
+  if yLim(2) < 100
+    text(-0.17*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
+  elseif yLim(2) < 1000
+    text(-0.19*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
+  else
+    text(-0.22*xAxisSize, yLim(2)-0.025*yAxisSize, 'C', 'FontSize',26, 'FontWeight','bold');
+  end
+
+  % Marginal rise time distribution
+  ax4 = nexttile(4);
+  xLim = [0 10];
+  xLabel = '10-90% rise time (ms)';
+  yLabel = 'Count';
+  rtHisto1D = histcounts(fitData.shapes(:,3), rtEdges);
+  bins = rtEdges(2:end)-rtBinSize/2;
+  rtBinsInterp = bins(1):rtBinSize/10:bins(end);
+  rtHisto1DInterp = interp1(bins, rtHisto1D, rtBinsInterp, 'linear');
+  smoothSpan = 5;
+  rtHisto1DInterp = smooth(rtHisto1DInterp, smoothSpan);
+  plot(rtBinsInterp, rtHisto1DInterp, 'b', 'LineWidth',1.25); hold off
+  xlim(xLim)
+  ylim([0 max(rtHisto1DInterp)+10])
+
+  xlabel(xLabel, 'FontSize',fontSize, 'FontWeight','bold')
+  ylabel(yLabel, 'FontSize',fontSize, 'FontWeight','bold')
+
+  set(ax4, 'box', 'off');
+  set(ax4, 'TickDir', 'out');
+  yTicks = get(ax4, 'YTick');
+  if numel(yTicks) > 8
+    set(ax4, 'YTick', yTicks(1:2:end));
+  end
+  ax4.FontSize = fontSize - 4;
+  set(get(ax4, 'XAxis'), 'FontWeight','bold');
+  set(get(ax4, 'YAxis'), 'FontWeight','bold');
+  set(ax4,'linewidth',1.5);
+
+  xAxisSize = xLim(2) - xLim(1);
+  yLim = ylim;
+  yAxisSize = yLim(2) - yLim(1);
+  if yLim(2) < 1000
+    text(-0.19*xAxisSize, yLim(2)-0.025*yAxisSize, 'D', 'FontSize',26, 'FontWeight','bold');
+  else
+    text(-0.22*xAxisSize, yLim(2)-0.025*yAxisSize, 'D', 'FontSize',26, 'FontWeight','bold');
+  end
+
+  % Save the figure
+  figName = ['SourceDistros4pFigures_' recIDs{iRec}];
+  if ~exist(figFolder, 'dir')
+    mkdir(figFolder);
+  end
+  figName = strrep(figName, ' ', '_');
+  figName = strrep(figName, '(', '_');
+  figName = strrep(figName, ')', '_');
+  figName = strrep(figName, '/', '_');
+  figName = strrep(figName, '.', '_');
+  figName = fullfile(figFolder, figName);
+  savefig(fT, figName,'compact');
+  exportgraphics(fT,[figName, '.png'], 'Resolution',900);
+  exportgraphics(fT,[figName, '.pdf'], 'ContentType','vector');
+  close(fT);
+end
+
 
 %% Draw the generic minis' distribution
 % Normalise distributions
