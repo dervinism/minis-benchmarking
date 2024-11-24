@@ -196,7 +196,7 @@ close all
 %% Local functions
 function [fileProperties, dt, sweepDuration] = loadabfWrap(filename)
 
-fileProperties = loadABF(filename);
+fileProperties = loadABF(filename, [], true);
 dt = fileProperties.dt;
 sweepDuration = (length(fileProperties.sweep)*dt - dt)/fileProperties.hd.lActualEpisodes;
 end
