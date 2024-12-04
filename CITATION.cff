@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Please cite this software using these metadata."
+authors:
+  - given-names: Martynas
+    family-names: Dervinis
+    email: martynas.dervinis@gmail.com
+    affiliation: Cardiff University
+    orcid: 'https://orcid.org/0000-0002-4676-7456'
+title: minis-benchmarking
+version: v1.0.0
+type: software
+date-released: "2024-12-04"
+license: GPL-3.0-or-later
